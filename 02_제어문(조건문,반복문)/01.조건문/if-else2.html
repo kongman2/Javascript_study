@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const date = new Date() //날짜
+         const hour = date.getHours() //시간
+         console.log(date)
+         console.log(hour)
+
+         // 아침, 점심, 저녁 먹을시간 구하기
+         // 아침: 11시 이전, 점심: 15시 이전, 저녁: 15시 이후
+
+         if (hour < 11) {
+            // 오전
+            alert('아침 먹을 시간입니다.')
+         } else {
+            // 점심 or 저녁
+            if (hour < 15) {
+               // 점심
+               alert('점심 먹을 시간입니다.')
+            } else {
+               // 저녁
+               alert('저녁 먹을 시간입니다.')
+            }
+         }
+      </script>
+   </body>
+</html>
