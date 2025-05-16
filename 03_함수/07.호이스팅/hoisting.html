@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // 호이스팅: 아래 정의된 함수를 끌어올려 사용
+
+         a() // 함수 실행시 호이스팅 가능
+
+         function a() {
+            document.write('haha')
+         }
+
+         b() // 함수 실행시 호이스팅 불가능
+
+         const b = function () {
+            document.write('baba')
+         }
+      </script>
+   </body>
+</html>

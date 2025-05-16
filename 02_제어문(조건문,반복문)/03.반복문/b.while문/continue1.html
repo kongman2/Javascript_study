@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // 1 ~ 10까지의 수 중 짝수만 출력
+         for (let i = 1; i <= 10; i++) {
+            if (i % 2 === 1) {
+               // 홀수
+               continue // 홀수 일때 아래코드를 실행하지 않고 조건식으로 돌아간다.
+            }
+
+            console.log(i) //짝수만 출력
+         }
+      </script>
+   </body>
+</html>
