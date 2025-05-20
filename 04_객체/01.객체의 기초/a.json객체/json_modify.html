@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         let dog = {
+            name: '흰둥이',
+            owner: '신짱구',
+            age: 1,
+            family: ['신짱구', '신짱아', '봉미선', '신형만'],
+            walk: function () {
+               console.log(this.name + '는 산책 중 입니다.')
+            },
+         }
+
+         // 객체의 값 바꾸기
+         // dog.name = '검둥이'
+         dog['name'] = '검둥이'
+         console.log(dog.name)
+
+         console.log('------------------------')
+
+         // 객체 내부 배열 바꾸기
+         // dog.family[0] = '짱구'
+         // dog.family[1] = '짱아'
+         dog['family'][0] = '짱구'
+         dog['family'][1] = '짱아'
+         console.log(dog.family)
+
+         console.log('------------------------')
+
+         // 객체 내부의 함수 바꾸기
+         dog.walk = function () {
+            console.log(this.name + '는 노는 중 입니다.')
+         }
+
+         dog['walk'] = function () {
+            console.log(this.name + '는 노는 중 입니다.')
+         }
+
+         dog.walk()
+
+         console.log('------------------------')
+
+         // 객체에 값 추가
+         // dog.friend = '맹구'
+         // dog['friend'] = '맹구'
+
+         dog.friend = ['맹구', '철수', '훈이', '유리']
+         dog.eat = function () {
+            console.log(this.name + '는 밥을 먹습니다.')
+         }
+
+         console.log(dog)
+         dog.eat()
+      </script>
+   </body>
+</html>
