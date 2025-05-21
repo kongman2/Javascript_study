@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <img src="https://picsum.photos/400/250" alt="랜덤이미지" class="rect" />
+
+      <script>
+         const rect = document.querySelector('.rect')
+         // 특정 태그의 속성값을 가지고 온다.
+         const src = rect.getAttribute('src') // src 속성의 값
+         const alt = rect.getAttribute('alt') // alt 속성의 값
+
+         console.log('이미지 경로: ', src)
+         console.log('이미지 설명: ', alt)
+      </script>
+   </body>
+</html>

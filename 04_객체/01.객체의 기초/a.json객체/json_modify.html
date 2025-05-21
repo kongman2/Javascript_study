@@ -34,9 +34,11 @@
          console.log('------------------------')
 
          // 객체 내부의 함수 바꾸기
+         /*
          dog.walk = function () {
             console.log(this.name + '는 노는 중 입니다.')
          }
+         */
 
          dog['walk'] = function () {
             console.log(this.name + '는 노는 중 입니다.')

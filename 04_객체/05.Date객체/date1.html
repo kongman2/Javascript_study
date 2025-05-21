@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         var today = new Date() // 현재 날짜, 시간 객체
+         console.log(today)
+
+         // 0: 일요일, 1: 월요일, 2: 화요일, 3: 수요일 ...
+         // 요일 함수
+         function getRealDay(day) {
+            switch (day) {
+               case 0:
+                  resultDay = '일'
+                  break
+               case 1:
+                  resultDay = '월'
+                  break
+               case 2:
+                  resultDay = '화'
+                  break
+               case 3:
+                  resultDay = '수'
+                  break
+               case 4:
+                  resultDay = '목'
+                  break
+               case 5:
+                  resultDay = '금'
+                  break
+               case 6:
+                  resultDay = '토'
+                  break
+            }
+            return resultDay
+         }
+
+         document.write(`오늘은 ${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 ${getRealDay(today.getDay())}요일`)
+      </script>
+   </body>
+</html>
