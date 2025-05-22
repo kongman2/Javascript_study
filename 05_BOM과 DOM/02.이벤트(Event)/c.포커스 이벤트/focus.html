@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+         input {
+            padding: 10px;
+            font-size: 16px;
+         }
+
+         input:focus {
+            background-color: lightyellow;
+         }
+      </style>
+   </head>
+   <body>
+      <h3>이름을 입력하세요.</h3>
+      <input type="text" class="textInput" id="nameInput" placeholder="이름 입력" />
+
+      <script>
+         const inputField = document.querySelector('#nameInput')
+
+         // id로 요소를 가져옴
+         //  const inputField = document.getElementById('nameInput')
+         // class로 요소를 가져옴
+         //  const inputField = document.getElementsByClassName('textInput')[0]
+
+         inputField.addEventListener('focus', () => {
+            console.log('입력 필드에 포거스가 되었습니다.')
+         })
+      </script>
+   </body>
+</html>

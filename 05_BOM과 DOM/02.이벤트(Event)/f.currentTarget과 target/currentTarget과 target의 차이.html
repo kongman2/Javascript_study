@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <div id="parent">
+         <button id="child">클릭</button>
+      </div>
+
+      <script>
+         const parent = document.querySelector('#parent')
+
+         parent.addEventListener('click', (event) => {
+            // 이벤트가 실제로 발생한 요소 참조
+            // 이벤트가 자식요소에서 발생시 자식요소를 가져옴
+            console.log('event.target:', event.target.id)
+
+            // 이벤트 리스너(addEventListener)가 등록된 요소를 참조
+            console.log('event.currentTarget:', event.currentTarget.id)
+         })
+      </script>
+   </body>
+</html>
