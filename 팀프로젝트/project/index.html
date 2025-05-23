@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>삼조월드</title>
+      <!-- 파비콘 -->
+      <link rel="icon" href="https://cyworld.com/favicon-32x32.png?v=9efb170b54f2c3c6ea701362d1c1c530" type="image/png" />
+      <!-- 외부 라이브러리 -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      <!-- 스타일시트 -->
+      <link rel="stylesheet" href="css/index.css" />
+   </head>
+   <body>
+      <div class="wrap">
+         <div class="container">
+            <div class="main-content">
+               <div class="top">
+                  <div class="count">
+                     <span>TODAY <font color="red">0</font></span>
+                     <span class="tab">TOTAL 0</span>
+                  </div>
+                  <div class="logo">우리팀은 말을 안해요</div>
+               </div>
+               <main class="main">
+                  <div class="left-profile">
+                     <div class="left-profile-photo"></div>
+                     <hr />
+                     <div class="info">삼조월드의 오신것을 환영합니다!</div>
+                     <div class="story">
+                        <ul>
+                           <li><b>친구목록</b></li>
+                           <li>팀장:박태민</li>
+                           <li>팀원:박형준</li>
+                           <li>팀원:한창민</li>
+                           <li>팀원:정송이</li>
+                           <li><del>출장:황민영</del></li>
+                        </ul>
+                     </div>
+                     <div class="song">
+                        ㄴr는 ㄱr 끔 눈물을 흘린ㄷr
+                        <br /><br />
+                        #싸이월드 #밀레니엄세대 #애들은가라
+                     </div>
+                  </div>
+                  <div class="right-content">
+                     <div id="profileID">
+                        <div>
+                           <div class="profile-photo"></div>
+                           <h4>박태민</h4>
+                           <div class="profile-content"></div>
+                        </div>
+                        <div>
+                           <div class="profile-photo"></div>
+                           <h4>박형준</h4>
+                           <div class="profile-content"></div>
+                        </div>
+                        <div>
+                           <div class="profile-photo"></div>
+                           <h4>한창민</h4>
+                           <div class="profile-content"></div>
+                        </div>
+                        <div>
+                           <div class="profile-photo"></div>
+                           <h4>정송이</h4>
+                           <div class="profile-content"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="navi">
+                     <nav>
+                        <ul>
+                           <li class="active">
+                              <a href="./index.html">홈</a>
+                           </li>
+                           <li>
+                              <a href="./profile.html">프로필</a>
+                           </li>
+                           <li>
+                              <a href="./photos_diary.html">사진첩</a>
+                           </li>
+                           <li>
+                              <a href="./new.html">방명록</a>
+                           </li>
+                        </ul>
+                     </nav>
+                  </div>
+               </main>
+            </div>
+         </div>
+      </div>
+
+      <script>
+         const profile = {
+            박태민: {
+               role: '팀장',
+               age: '28',
+               hobby: ['농구', '게임', '드라마'],
+               want: `
+                  낯은 좀 가리지만 사람들을 좋아합니다.잘부탁합니다.`,
+            },
+            박형준: {
+               role: '팀원',
+               age: '31',
+               hobby: ['코딩', '코인노래방', '개산책'],
+               want: `
+                  서로 배워가는 입장에서 각자의 정보를 공유했으면 좋겠습니다.`,
+            },
+            한창민: {
+               role: '팀원',
+               age: '27',
+               hobby: ['게임', '운동', 'OTT보기'],
+               want: `
+                  코딩은 처음이라 미숙한 부분이 많은데 폐 끼치지 않게 노력해보겠습니다.`,
+            },
+            정송이: {
+               role: '팀원',
+               age: '27',
+               hobby: ['영화', '게임', '여행'],
+               want: `
+                  저는 대학시절 디자인 전공을 해서 피그마, css 등을 활용한 웹디자인을 하고 싶습니다`,
+            },
+         }
+         const profiles = document.querySelectorAll('.profile-content')
+         profiles.forEach((p) => {
+            // 이전 형제 요소(h4)의 텍스트(이름) 가져오기
+            const name = p.previousElementSibling ? p.previousElementSibling.textContent : p.parentElement.querySelector('h4').textContent
+            // profile 객체에서 해당 이름의 정보 불러오기
+            if (profile[name]) {
+               p.innerHTML = `
+               <p style="margin: 5px 0; border-bottom: 1px dotted #111; width: 100%"></p>
+               <p>역할: ${profile[name].role}</p>
+               <p>나이: ${profile[name].age}세</p>
+               <p>취미: ${profile[name].hobby}</p>
+               <p>요청: ${profile[name].want}</p>
+               `
+            }
+         })
+
+         // 눈내리는 효과 로직
+         const snow = document.querySelector('body')
+
+         for (let i = 0; i < 200; i++) {
+            const snow = document.createElement('div')
+            snow.className = 'snow'
+            snow.style.opacity = Math.random()
+
+            const startX = Math.random() * 100
+            const endX = startX + (Math.random() * 20 - 10)
+            const scale = Math.max(Math.random(), 0.5)
+
+            const keyframe = [{ transform: `translate(${startX}vw, 0) scale(${scale})` }, { transform: `translate(${endX}vw, 100vh) scale(${scale})` }]
+            const option = {
+               duration: 15000,
+               easing: 'linear',
+               iterations: Infinity,
+               delay: -Math.random() * 20 * 1000,
+            }
+            snow.animate(keyframe, option)
+
+            document.body.appendChild(snow)
+         }
+
+         // 방문자 수 증가 로직
+         let today = Number(localStorage.getItem('today')) || 0
+         let total = Number(localStorage.getItem('total')) || 200
+
+         today += 1
+         total += 1
+
+         localStorage.setItem('today', today)
+         localStorage.setItem('total', total)
+
+         // 값 표시
+         document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.count span').innerHTML = `TODAY <font color="red">${today}</font>`
+            document.querySelector('.count .tab').textContent = `TOTAL ${total}`
+         })
+      </script>
+   </body>
+</html>

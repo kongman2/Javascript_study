@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>삼조월드</title>
+      <!-- 파비콘 -->
+      <link rel="icon" href="https://cyworld.com/favicon-32x32.png?v=9efb170b54f2c3c6ea701362d1c1c530" type="image/png" />
+      <!-- 외부 라이브러리 -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      <!-- 스타일시트 -->
+      <link rel="stylesheet" href="css/photos_diary.css" />
+   </head>
+   <body>
+      <div class="wrap">
+         <div class="container">
+            <div class="main-content">
+               <div class="top">
+                  <div class="count">
+                     <span>TODAY <font color="red">0</font></span>
+                     <span class="tab">TOTAL 0</span>
+                  </div>
+                  <div class="logo">우리팀은 말을 안해요</div>
+               </div>
+               <main class="main">
+                  <div class="left-profile">
+                     <div class="left-profile-photo"></div>
+                     <hr />
+                     <div class="info">삼조월드의 오신것을 환영합니다!</div>
+                     <div class="story">
+                        <ul>
+                           <li><b>친구목록</b></li>
+                           <li>팀장:박태민</li>
+                           <li>팀원:박형준</li>
+                           <li>팀원:한창민</li>
+                           <li>팀원:정송이</li>
+                           <li><del>출장:황민영</del></li>
+                        </ul>
+                     </div>
+                     <div class="song">
+                        ㄴr는 ㄱr 끔 눈물을 흘린ㄷr
+                        <br /><br />
+                        #싸이월드 #밀레니엄세대 #애들은가라
+                     </div>
+                  </div>
+                  <div class="right-content">
+                     <div class="section album-section">
+                        <h2>Photos</h2>
+                        <div class="photos">
+                           <img src="https://i.pinimg.com/736x/ea/bb/cb/eabbcb143a28533befdb70a92ba1e99a.jpg" alt="사진1" />
+                           <img src="https://i.pinimg.com/736x/a5/3b/1b/a53b1b715e2363a2812ccfb5cdd7727f.jpg" alt="사진2" />
+                           <img src="https://i.pinimg.com/736x/0f/1e/1a/0f1e1ae95fb24af9fd016023831e6bec.jpg" alt="사진3" />
+                           <img src="https://i.pinimg.com/736x/2b/8a/65/2b8a655a73602a5eeab294dd865f4edc.jpg" alt="사진4" />
+                        </div>
+                     </div>
+                     <div class="section diary-section">
+                        <h2>오늘의 다이어리</h2>
+                        <textarea id="diaryText" class="diary-text" placeholder="오늘의 기분을 적어보세요 :)"></textarea>
+                        <button class="save-button" onclick="saveDiary()">저장하기</button>
+                        <div class="diary-list" id="diaryList"></div>
+                     </div>
+                  </div>
+
+                  <div class="navi">
+                     <nav>
+                        <ul>
+                           <li>
+                              <a href="./index.html">홈</a>
+                           </li>
+                           <li>
+                              <a href="./profile.html">프로필</a>
+                           </li>
+                           <li>
+                              <a href="./photos_diary.html">사진첩</a>
+                           </li>
+                           <li>
+                              <a href="./new.html">방명록</a>
+                           </li>
+                        </ul>
+                     </nav>
+                  </div>
+               </main>
+            </div>
+         </div>
+      </div>
+
+      <script>
+         // 다이어리 작성 후 저장(삭제)
+         const diaryText = document.getElementById('diaryText')
+         const diaryList = document.getElementById('diaryList')
+         function loadDiaryList() {
+            diaryList.innerHTML = ''
+            let list = JSON.parse(localStorage.getItem('diaryEntries') || '[]')
+            if (list.length === 0) {
+               diaryList.innerHTML = '<p>작성된 다이어리가 없습니다.</p>'
+               return
+            }
+            list.forEach((item, index) => {
+               const div = document.createElement('div')
+               div.className = 'diary-list-item'
+               const textSpan = document.createElement('span')
+               textSpan.textContent = item
+               const delBtn = document.createElement('button')
+               delBtn.className = 'delete-btn'
+               delBtn.textContent = '삭제'
+               delBtn.onclick = () => deleteDiary(index)
+               div.appendChild(textSpan)
+               div.appendChild(delBtn)
+               diaryList.appendChild(div)
+            })
+         }
+         function saveDiary() {
+            const text = diaryText.value.trim()
+            if (!text) {
+               alert('내용을 입력해주세요.')
+               return
+            }
+            let list = JSON.parse(localStorage.getItem('diaryEntries') || '[]')
+            list.push(text)
+            localStorage.setItem('diaryEntries', JSON.stringify(list))
+            diaryText.value = ''
+            loadDiaryList()
+            alert('다이어리가 저장되었어요!')
+         }
+         function deleteDiary(index) {
+            let list = JSON.parse(localStorage.getItem('diaryEntries') || '[]')
+            list.splice(index, 1)
+            localStorage.setItem('diaryEntries', JSON.stringify(list))
+            loadDiaryList()
+         }
+         window.onload = loadDiaryList
+
+         // 눈내리는 효과 로직
+         const snow = document.querySelector('body')
+
+         for (let i = 0; i < 200; i++) {
+            const snow = document.createElement('div')
+            snow.className = 'snow'
+            snow.style.opacity = Math.random()
+
+            const startX = Math.random() * 100
+            const endX = startX + (Math.random() * 20 - 10)
+            const scale = Math.max(Math.random(), 0.5)
+
+            const keyframe = [{ transform: `translate(${startX}vw, 0) scale(${scale})` }, { transform: `translate(${endX}vw, 100vh) scale(${scale})` }]
+            const option = {
+               duration: 15000,
+               easing: 'linear',
+               iterations: Infinity,
+               delay: -Math.random() * 20 * 1000,
+            }
+            snow.animate(keyframe, option)
+
+            document.body.appendChild(snow)
+         }
+
+         // 방문자 수 증가 로직
+         let today = Number(localStorage.getItem('today')) || 0
+         let total = Number(localStorage.getItem('total')) || 200
+
+         today += 1
+         total += 1
+
+         localStorage.setItem('today', today)
+         localStorage.setItem('total', total)
+
+         // 값 표시
+         document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.count span').innerHTML = `TODAY <font color="red">${today}</font>`
+            document.querySelector('.count .tab').textContent = `TOTAL ${total}`
+         })
+      </script>
+   </body>
+</html>
