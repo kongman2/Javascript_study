@@ -321,10 +321,9 @@ body {
    display: flex;
    justify-content: center;
    align-items: end;
-   width: 700px;
+   max-width: 750px;
    padding: 20px;
 }
-
 #wrap-t {
    max-width: 1080px;
    height: auto;

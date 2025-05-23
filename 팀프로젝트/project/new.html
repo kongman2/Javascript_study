@@ -47,8 +47,8 @@
                      <div id="wrap-t">
                         <div id="main-t"></div>
                         <div id="bottom-t">
-                           <textarea name="visited" id="visited"></textarea>
-                           <button id="visited_ok">확인</button>
+                           <textarea name="visited" id="visited" class="textarea" style="min-width: 650px"></textarea>
+                           <button id="visited_ok" style="width: 200px; height: 30px; margin-left: 5px; padding: 0 5px">확인</button>
                         </div>
                      </div>
                   </div>
@@ -76,52 +76,6 @@
       </div>
 
       <script>
-         const profile = {
-            박태민: {
-               role: '팀장',
-               age: '28',
-               hobby: ['농구', '게임', '드라마'],
-               want: `
-                  낯은 좀 가리지만 사람들을 좋아합니다.잘부탁합니다.`,
-            },
-            박형준: {
-               role: '팀원',
-               age: '31',
-               hobby: ['코딩', '코인노래방', '개산책'],
-               want: `
-                  서로 배워가는 입장에서 각자의 정보를 공유했으면 좋겠습니다.`,
-            },
-            한창민: {
-               role: '팀원',
-               age: '27',
-               hobby: ['게임', '운동', 'OTT보기'],
-               want: `
-                  코딩은 처음이라 미숙한 부분이 많은데 폐 끼치지 않게 노력해보겠습니다.`,
-            },
-            정송이: {
-               role: '팀원',
-               age: '27',
-               hobby: ['영화', '게임', '여행'],
-               want: `
-                  저는 대학시절 디자인 전공을 해서 피그마, css 등을 활용한 웹디자인을 하고 싶습니다`,
-            },
-         }
-         const profiles = document.querySelectorAll('.profile-content')
-         profiles.forEach((p) => {
-            // 이전 형제 요소(h4)의 텍스트(이름) 가져오기
-            const name = p.previousElementSibling ? p.previousElementSibling.textContent : p.parentElement.querySelector('h4').textContent
-            // profile 객체에서 해당 이름의 정보 불러오기
-            if (profile[name]) {
-               p.innerHTML = `
-               <p style="margin: 5px 0; border-bottom: 1px dotted #111; width: 100%"></p>
-               <p>역할: ${profile[name].role}</p>
-               <p>나이: ${profile[name].age}세</p>
-               <p>취미: ${profile[name].hobby}</p>
-               <p>요청: ${profile[name].want}</p>
-               `
-            }
-         })
-
          // 눈내리는 효과 로직
          const snow = document.querySelector('body')
 
