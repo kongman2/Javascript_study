@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         function test() {
+            try {
+               alert('A 위치입니다.')
+               throw '예외 강제 발생'
+            } catch (error) {
+               alert('B 위치입니다.')
+               return // 예외 발생시 return 문을 만나면서 test() 함수가 종료 직전에 finally 구문의 코드를 실행한다.
+            } finally {
+               alert('C 위치입니다.')
+            }
+         }
+         test()
+      </script>
+   </body>
+</html>
