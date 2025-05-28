@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const options = {
+            method: 'GET', // RestFul 방식 중 get 방식으로 요청 -> Read 해줘! -> 현재 상영중인 영화를 읽게 해줘!(데이터 줘)
+            headers: {
+               // accept: "나는 json 객체로 데이터를 받을거야" 라고 서버에게 전달
+               accept: 'application/json',
+               // Authorization: 보안을 위해서 서버에 같이 전달하는 인증키
+               Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTczNDdhZTE3ZjZjMzc5NzhhNzAzZDdmYjMxMTVkOCIsIm5iZiI6MTc0ODM5NDA5Ni4yODQsInN1YiI6IjY4MzY2MDcwMGE0ZWNhYjBkNjgzOGIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vRtnGv5d1GvijAuiBNxhaJNrdWRkcDEYpiuqNGdHzqY',
+            },
+         }
+
+         /*
+         왜 fetch는 promise를 사용해서 구현했을까?
+         (서버에서 데이터 가져오는 걸 왜 비동기로 구현했을까?)
+
+         promise, async-> 비동기
+         서버에 request 해주는 과정은 전부 비동기 동작시키고 있다
+
+         서버에 장애가 있거나 네트워크 문제가 생길때 동기적으로 실행이 된다면 다른코드가 실행되지 못하므로 사용자는 다른 작업을 할 수 X
+
+         -> 따라서 서버에서 데이터를 가져오는 걸 비동기로 구현
+         */
+
+         const url = 'https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1'
+
+         // async function getPlayingMovies() {}
+         const getPlayingMovies = async (url) => {
+            try {
+               const res = await fetch(url, options) // 서버에서 데이터를 가져올때까지 시간이 다소 걸리므로 기다린다
+               // console.log(res)
+
+               const data = await res.json() // fetch() 함수 실행을 완료하기까지 기다린 후 응답 데이터를 받아야 하므로
+               // console.log(data)
+
+               data.results.forEach((result) => {
+                  console.log(result.title)
+                  console.log(result.id)
+                  console.log(result.poster_path)
+                  console.log(result.vote_average)
+                  console.log('')
+               })
+            } catch (error) {
+               console.log('에러발생: ', error)
+            }
+         }
+         getPlayingMovies(url)
+
+         // 슬라이드 만들어주고 화면 보여주고 ...등등
+      </script>
+   </body>
+</html>
