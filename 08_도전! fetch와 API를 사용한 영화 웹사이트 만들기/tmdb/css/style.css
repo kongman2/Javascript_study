@@ -30,3 +30,67 @@ footer {
 main .container {
    padding: 40px 0;
 }
+
+main .container .row {
+   justify-content: center;
+}
+/* card 길이 안맞는 부분 수정 */
+main .container .row .card {
+   height: 100%;
+}
+
+main .container .row .card a {
+   height: 80%;
+}
+
+main .container .row .card img {
+   height: 100%;
+   object-fit: cover; /* 이미지를 높이에 맞추고 너비는 자동으로 조절(이미지 비율을 살리면서 전체적으로 cover) */
+}
+
+main .container .row .card .multiline-ellipsis {
+   width: 300px; /* 고정 너비 */
+   height: 6em; /* 줄 수 × line-height */
+   line-height: 1.5em; /* 줄 높이 */
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 4; /* 표시할 줄 수 */
+   -webkit-box-orient: vertical;
+   text-overflow: ellipsis;
+}
+
+/* detail.html */
+
+main .container .movie-detail > ul.movie-info,
+p {
+   margin-bottom: 10px !important;
+}
+
+main .container ul.movie-info {
+   display: flex;
+}
+
+main .container ul.movie-info li {
+   padding-right: 13px;
+}
+
+/* 반응형 UI 문제 해결 */
+
+/* 576px ~ 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+   /* 상세페이지 포스터가 작아지는 문제 해결 */
+   .col-sm-9 {
+      width: 60%;
+   }
+   .col-sm-3 {
+      width: 40%;
+   }
+   /* 상세페이지 글자가 2줄이 되는 문제 해결 */
+   main .container ul.movie-info {
+      display: initial;
+   }
+
+   main .container ul.movie-info li {
+      padding-bottom: 10px;
+   }
+}
